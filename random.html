@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ランダム整数</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #1a1a2e;
+      font-family: sans-serif;
+    }
+
+    #number {
+      font-size: 120px;
+      font-weight: bold;
+      color: #e94560;
+      min-width: 200px;
+      text-align: center;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+
+    #number.flash {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 16px 48px;
+      font-size: 20px;
+      background: #e94560;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #c73652;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+  <div id="number">?</div>
+  <button onclick="roll()">ランダムに決める</button>
+
+  <script>
+    function roll() {
+      const el = document.getElementById('number');
+      el.classList.add('flash');
+      setTimeout(() => el.classList.remove('flash'), 150);
+      el.textContent = Math.floor(Math.random() * 99) + 1;
+    }
+  </script>
+</body>
+</html>
